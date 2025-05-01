@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookshelf App</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <h1>📚 Bookshelf App</h1>
+            <p class="subtitle">Kelola koleksi buku bacaan Anda</p>
+        </header>
+
+        <main class="app-main">
+            <section class="input-section">
+                <div class="form-container">
+                    <h2 class="section-title">➕ Tambah Buku Baru</h2>
+                    <form id="bookForm" class="book-form">
+                        <div class="form-group">
+                            <label for="bookFormTitle">Judul</label>
+                            <input id="bookFormTitle" type="text" required placeholder="Masukkan judul buku">
+                        </div>
+                        <div class="form-group">
+                            <label for="bookFormAuthor">Penulis</label>
+                            <input id="bookFormAuthor" type="text" required placeholder="Masukkan nama penulis">
+                        </div>
+                        <div class="form-group">
+                            <label for="bookFormYear">Tahun</label>
+                            <input id="bookFormYear" type="number" required placeholder="Tahun terbit">
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="bookFormIsComplete">
+                            <label for="bookFormIsComplete">Selesai dibaca</label>
+                        </div>
+                        <button type="submit" class="submit-btn">
+                            <span>Masukkan Buku ke rak</span>
+                            <span class="status-text">Belum selesai dibaca</span>
+                        </button>
+                    </form>
+                </div>
+
+                <div class="search-container">
+                    <h2 class="section-title">🔍 Cari Buku</h2>
+                    <form id="searchBook" class="search-form">
+                        <div class="search-group">
+                            <input id="searchBookTitle" type="text" placeholder="Cari berdasarkan judul atau penulis">
+                            <button type="submit" class="search-btn">
+                                <span>Cari</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="11" cy="11" r="8"></circle>
+                                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                </svg>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+
+            <section class="bookshelf-section">
+                <div class="bookshelf-container">
+                    <h2 class="section-title">📖 Belum selesai dibaca</h2>
+                    <div id="incompleteBookList" class="book-list">
+                        <!-- Buku yang belum selesai dibaca akan ditambahkan di sini secara dinamis -->
+                    </div>
+                </div>
+
+                <div class="bookshelf-container">
+                    <h2 class="section-title">✅ Selesai dibaca</h2>
+                    <div id="completeBookList" class="book-list">
+                        <!-- Buku yang sudah selesai dibaca akan ditambahkan di sini secara dinamis -->
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="app-footer">
+            <p>© 2025 Bookshelf App | Dibuat dengan ❤️</p>
+        </footer>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
