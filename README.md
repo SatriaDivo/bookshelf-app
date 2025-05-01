@@ -1,66 +1,48 @@
-#📚 Bookshelf App
+# 📚 Bookshelf App
+
 Aplikasi manajemen buku sederhana dengan kemampuan menambah, melihat, dan menyimpan data buku. Aplikasi ini dibagi menjadi dua bagian:
 
-Backend: Dibuat menggunakan Node.js, Express, Sequelize, dan MySQL.
+- **Backend**: Dibuat menggunakan Node.js, Express, Sequelize, dan MySQL.
+- **Frontend**: Dibuat dengan HTML, CSS, dan JavaScript murni.
 
-Frontend: Dibuat dengan HTML, CSS, dan JavaScript murni.
+## 📦 Fitur Utama
 
-📦 Fitur Utama
-Menampilkan daftar buku.
+- Menampilkan daftar buku
+- Menambah buku baru
+- Menyimpan data buku di database MySQL
+- Komunikasi frontend dan backend via REST API
 
-Menambah buku baru.
+---
 
-Menyimpan data buku di database MySQL.
+## ⚙️ Setup Proyek Lengkap
 
-Komunikasi frontend dan backend via REST API.
+### 🔧 1. Setup Backend
 
-⚙️ Setup Proyek Lengkap
-🔧 1. Setup Backend
-a. Inisialisasi Proyek Node.js
-Buka terminal dan jalankan:
-
-bash
-Copy
-Edit
+#### a. Inisialisasi Proyek Node.js
 mkdir bookshelf-app-backend
 cd bookshelf-app-backend
 npm init -y
+
 Instal dependency:
-
-bash
-Copy
-Edit
 npm install express sequelize mysql2 cors body-parser
+
 Instal Sequelize CLI secara lokal:
-
-bash
-Copy
-Edit
 npx sequelize-cli init
-Struktur akan terbentuk:
 
-arduino
-Copy
-Edit
+Struktur direktori akan terbentuk seperti ini:
 bookshelf-app-backend/
 ├── config/
 ├── models/
 ├── migrations/
 ├── seeders/
 └── server.js (buat manual)
+
 b. Buat Database di MySQL
 Masuk ke MySQL dan jalankan:
-
-sql
-Copy
-Edit
 CREATE DATABASE bookshelf_db;
+
 c. Konfigurasi config/config.json
 Edit file config/config.json:
-
-json
-Copy
-Edit
 {
   "development": {
     "username": "root",
@@ -70,28 +52,19 @@ Edit
     "dialect": "mysql"
   }
 }
-Catatan: Sesuaikan username dan password dengan MySQL Anda.
+💡 Sesuaikan username dan password dengan MySQL Anda.
 
 d. Buat Model dan Migration
-bash
-Copy
-Edit
 npx sequelize-cli model:generate --name Book --attributes title:string,author:string,year:integer,isComplete:boolean
-Akan otomatis membuat file di:
 
+File yang dihasilkan:
 models/book.js
-
 migrations/xxxx-create-book.js
 
 e. Jalankan Migrasi Database
-bash
-Copy
-Edit
 npx sequelize-cli db:migrate
+
 f. Buat File server.js
-javascript
-Copy
-Edit
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
@@ -116,19 +89,15 @@ app.post('/books', async (req, res) => {
 // Jalankan server
 const PORT = 3000;
 app.listen(PORT, () => console.log(`Server berjalan di http://localhost:${PORT}`));
+
 🎨 2. Setup Frontend
 a. Struktur Folder
-pgsql
-Copy
-Edit
 bookshelf-app-frontend/
 ├── index.html
 ├── style.css
 └── script.js
+
 b. index.html
-html
-Copy
-Edit
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -148,10 +117,8 @@ Edit
   <script src="script.js"></script>
 </body>
 </html>
+
 c. style.css
-css
-Copy
-Edit
 body {
   font-family: sans-serif;
   padding: 20px;
@@ -165,10 +132,8 @@ ul {
   list-style: none;
   padding-left: 0;
 }
+
 d. script.js
-javascript
-Copy
-Edit
 document.getElementById('book-form').addEventListener('submit', async (e) => {
   e.preventDefault();
   const book = {
@@ -195,20 +160,20 @@ window.onload = async () => {
     list.appendChild(item);
   });
 };
+
 ▶️ Menjalankan Aplikasi
 1. Jalankan Backend
-bash
-Copy
-Edit
 cd bookshelf-app-backend
 node server.js
-2. Jalankan Frontend
-Buka file index.html di browser, atau
 
-Gunakan ekstensi Live Server (VSCode)
+
+2. Jalankan Frontend
+Buka file index.html di browser, atau gunakan ekstensi Live Server (VSCode).
 
 ✍️ Author
+Satria Divo
 GitHub: @SatriaDivo
 
 📄 Lisensi
-Proyek ini open source dan bebas digunakan untuk pembelajaran.
+Proyek ini bersifat open source dan bebas digunakan untuk pembelajaran.
+
