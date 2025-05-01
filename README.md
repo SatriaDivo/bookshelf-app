@@ -19,30 +19,39 @@ Aplikasi manajemen buku sederhana dengan kemampuan menambah, melihat, dan menyim
 ### 🔧 1. Setup Backend
 
 #### a. Inisialisasi Proyek Node.js
+```bash
 mkdir bookshelf-app-backend
 cd bookshelf-app-backend
 npm init -y
+```
 
 Instal dependency:
+```bash
 npm install express sequelize mysql2 cors body-parser
+```
 
 Instal Sequelize CLI secara lokal:
+```bash
 npx sequelize-cli init
+```
 
 Struktur direktori akan terbentuk seperti ini:
+```
 bookshelf-app-backend/
 ├── config/
 ├── models/
 ├── migrations/
 ├── seeders/
 └── server.js (buat manual)
+```
 
-b. Buat Database di MySQL
-Masuk ke MySQL dan jalankan:
+#### b. Buat Database di MySQL
+```sql
 CREATE DATABASE bookshelf_db;
+```
 
-c. Konfigurasi config/config.json
-Edit file config/config.json:
+#### c. Konfigurasi config/config.json
+```json
 {
   "development": {
     "username": "root",
@@ -52,19 +61,25 @@ Edit file config/config.json:
     "dialect": "mysql"
   }
 }
+```
 💡 Sesuaikan username dan password dengan MySQL Anda.
 
-d. Buat Model dan Migration
+#### d. Buat Model dan Migration
+```bash
 npx sequelize-cli model:generate --name Book --attributes title:string,author:string,year:integer,isComplete:boolean
+```
 
 File yang dihasilkan:
-models/book.js
-migrations/xxxx-create-book.js
+- `models/book.js`
+- `migrations/xxxx-create-book.js`
 
-e. Jalankan Migrasi Database
+#### e. Jalankan Migrasi Database
+```bash
 npx sequelize-cli db:migrate
+```
 
-f. Buat File server.js
+#### f. Buat File server.js
+```javascript
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
@@ -89,15 +104,20 @@ app.post('/books', async (req, res) => {
 // Jalankan server
 const PORT = 3000;
 app.listen(PORT, () => console.log(`Server berjalan di http://localhost:${PORT}`));
+```
 
-🎨 2. Setup Frontend
-a. Struktur Folder
+### 🎨 2. Setup Frontend
+
+#### a. Struktur Folder
+```
 bookshelf-app-frontend/
 ├── index.html
 ├── style.css
 └── script.js
+```
 
-b. index.html
+#### b. index.html
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -117,8 +137,10 @@ b. index.html
   <script src="script.js"></script>
 </body>
 </html>
+```
 
-c. style.css
+#### c. style.css
+```css
 body {
   font-family: sans-serif;
   padding: 20px;
@@ -132,8 +154,10 @@ ul {
   list-style: none;
   padding-left: 0;
 }
+```
 
-d. script.js
+#### d. script.js
+```javascript
 document.getElementById('book-form').addEventListener('submit', async (e) => {
   e.preventDefault();
   const book = {
@@ -160,20 +184,24 @@ window.onload = async () => {
     list.appendChild(item);
   });
 };
+```
 
-▶️ Menjalankan Aplikasi
-1. Jalankan Backend
+### ▶️ Menjalankan Aplikasi
+
+1. **Jalankan Backend**
+```bash
 cd bookshelf-app-backend
 node server.js
+```
 
+2. **Jalankan Frontend**
+Buka file `index.html` di browser, atau gunakan ekstensi **Live Server** (VSCode).
 
-2. Jalankan Frontend
-Buka file index.html di browser, atau gunakan ekstensi Live Server (VSCode).
+---
 
-✍️ Author
-Satria Divo
-GitHub: @SatriaDivo
+## ✍️ Author
+**Satria Divo**  
+GitHub: [@SatriaDivo](https://github.com/SatriaDivo)
 
-📄 Lisensi
+## 📄 Lisensi
 Proyek ini bersifat open source dan bebas digunakan untuk pembelajaran.
-
